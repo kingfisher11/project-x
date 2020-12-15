@@ -32,6 +32,7 @@ class TrainingController extends Controller
         $training->title = $request->title;
         $training->description = $request->description;
         $training->trainer = $request->trainer;
+        $training->user_id = auth()->user()->id;
         $training->save();
         // return to index
         return redirect()->back();
