@@ -33,7 +33,10 @@
                     <td>
                     <a href="{{ route('training:show', $training)}}" class="btn btn-primary">View</a>
                     </td>                     <td>
-                    <a href="{{ route('training:edit', $training)}}" class="btn btn-primary">Edit</a>
+                    <a href="{{ route('training:edit', $training)}}" class="btn btn-success">Edit</a>
+                    </td>
+                    <td>
+                    <a onClick="return confirm('Are you sure?')" href="{{ route('training:delete', $training)}}" class="btn btn-danger">Delete</a>
                     </td>
                     </tr>
                 @endforeach

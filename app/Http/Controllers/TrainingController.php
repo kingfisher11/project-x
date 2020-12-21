@@ -70,4 +70,15 @@ class TrainingController extends Controller
         // return to trainings
         return redirect()->route('training:list');
     }
+
+    public function delete(Training $training)
+    {
+        // find id on table using model
+        //$training = Training::find($id);
+        // this function is using Binding Model
+        $training->delete();
+
+        // return to view
+        return redirect()->route('training:list');
+    }
 }
