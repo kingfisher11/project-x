@@ -27,6 +27,6 @@ Route::get('/trainings', [\App\Http\Controllers\TrainingController::class, 'inde
 Route::get('/users', [\App\Http\Controllers\UserController::class, 'index']);
 Route::get('/trainings/create', [\App\Http\Controllers\TrainingController::class, 'create'])->name('training:create'); // route utk display form
 Route::post('/trainings/create', [\App\Http\Controllers\TrainingController::class, 'store']); //route utk simpan data
-Route::get('/trainings/{id}',[App\Http\Controllers\TrainingController::class, 'show'])->name('training:show');
+Route::get('/trainings/{training}',[App\Http\Controllers\TrainingController::class, 'show'])->name('training:show');
 Route::get('/trainings/{id}/edit',[App\Http\Controllers\TrainingController::class, 'edit'])->name('training:edit');
 Route::post('/trainings/{id}/edit',[App\Http\Controllers\TrainingController::class, 'update'])->name('training:update');

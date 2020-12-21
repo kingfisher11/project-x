@@ -38,11 +38,11 @@ class TrainingController extends Controller
         return redirect()->back();
     }
 
-    public function show($id)
+    public function show(Training $training)
     {
         // find id on table using model
-        $training = Training::find($id);
-
+        //$training = Training::find($id);
+        // this function is using Binding Model
 
         // return to view
         return view('trainings.show', compact('training'));
