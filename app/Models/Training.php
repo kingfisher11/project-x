@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Training extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'description', 'trainer'];
     
     // relationship for table user and trainings
     public function user()

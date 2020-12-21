@@ -29,3 +29,4 @@ Route::get('/trainings/create', [\App\Http\Controllers\TrainingController::class
 Route::post('/trainings/create', [\App\Http\Controllers\TrainingController::class, 'store']); //route utk simpan data
 Route::get('/trainings/{id}',[App\Http\Controllers\TrainingController::class, 'show'])->name('training:show');
 Route::get('/trainings/{id}/edit',[App\Http\Controllers\TrainingController::class, 'edit'])->name('training:edit');
+Route::post('/trainings/{id}/edit',[App\Http\Controllers\TrainingController::class, 'update'])->name('training:update');

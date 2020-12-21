@@ -57,4 +57,17 @@ class TrainingController extends Controller
         // return to view
         return view('trainings.edit', compact('training'));
     }
+
+    public function update($id, Request $request)
+    {
+        // find id at tables
+        $training = Training::find($id);
+
+        // update training with edited attributes
+        // method 2 - mass assignment
+        $training->update($request->only('title', 'description', 'trainier'));
+
+        // return to trainings
+        return redirect()->route('training:list');
+    }
 }
