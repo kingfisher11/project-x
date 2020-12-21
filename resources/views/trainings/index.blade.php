@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Training Index') }}</div>
 
@@ -16,6 +16,7 @@
                     <th>Description</th>
                     <th>Creator</th>
                     <th>Date Created</th>
+                    <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,7 +30,11 @@
                     {{ $training->user->name}}
                     </td>
                     <td>{{$training->created_at ? $training->created_at->diffForHumans() : 'Tiada'}}</td>
-                    
+                    <td>
+                    <a href="{{ route('training:show', $training)}}" class="btn btn-primary">View</a>
+                    </td>                     <td>
+                    <a href="{{ route('training:edit', $training)}}" class="btn btn-primary">Edit</a>
+                    </td>
                     </tr>
                 @endforeach
 
