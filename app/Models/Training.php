@@ -9,7 +9,7 @@ class Training extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'trainer'];
+    protected $fillable = ['title', 'description', 'trainer', 'attachment'];
     
     // relationship for table user and trainings
     public function user()

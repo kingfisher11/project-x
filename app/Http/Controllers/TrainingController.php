@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Training;
+use File;
+use Storage;
 
 class TrainingController extends Controller
 {
     public function index()
     {
         // query trainings from trainings table using model
-        $trainings = \App\Models\Training::paginate(2);
+        $trainings = \App\Models\Training::paginate();
         // return to view with $trainings
         //resources/view/trainings/index.blade.php
         return view('trainings.index', compact('trainings'));
@@ -34,6 +36,15 @@ class TrainingController extends Controller
         $training->trainer = $request->trainer;
         $training->user_id = auth()->user()->id;
         $training->save();
+
+        if ($request->hasFile('attachment')){
+            // rename file 10-2020-12-22.jpg
+            $filename = $training->id.'-'.date("Y-m-d").'.'.$request->attachment->getClientOriginalExtension();
+            // store file on storage
+            Storage::disk('public')->put($filename, File::get($request->attachment));
+            // update row with filename
+            $training->update(['attachment'=>$filename]);
+        }
         // return to index
         return redirect()->back();
     }
@@ -76,6 +87,9 @@ class TrainingController extends Controller
         // find id on table using model
         //$training = Training::find($id);
         // this function is using Binding Model
+        if ($training->attachment != null){
+            Storage::disk('public')->delete($training->attachment);
+        }
         $training->delete();
 
         // return to view
