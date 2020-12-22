@@ -26,7 +26,15 @@ class TrainingController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        $this->validate(
+            $request, [
+                'title' => 'required|min:3',
+                'description' => 'required'
+            ]
+            );
+        
+        
         // store all data from form to training table
         // dd($request->all()); //debug
         // method 1 POPO (plain old php object)
@@ -46,7 +54,8 @@ class TrainingController extends Controller
             $training->update(['attachment'=>$filename]);
         }
         // return to index
-        return redirect()->back();
+        return redirect()
+        ->route('training:list');
     }
 
     public function show(Training $training)
