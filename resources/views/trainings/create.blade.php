@@ -24,6 +24,11 @@
                         <label>Trainer</label>
                         <input type="text" name="trainer" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label>Attachment</label>
+                        <input type="file" name="trattachment" class="form-control">
+                    </div>
                     
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Store My Trainer</button>

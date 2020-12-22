@@ -14,7 +14,7 @@ class AlterTrainingTableAddAttachmentColumn extends Migration
     public function up()
     {
         Schema::table('trainings', function (Blueprint $table) {
-            $table->string('attachment')->nullable()->alter('trainer');
+            $table->string('attachment')->nullable()->after('trainer');
         });
     }
 
