@@ -16,4 +16,15 @@ class Training extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function getAttachmentUrlAttribute()
+    {
+        if ($this->attachment){
+            return asset('storage/'.$this->attachment);
+
+        } else {
+            return  asset ('https://cdn.osxdaily.com/wp-content/uploads/2013/12/there-is-no-connected-camera-mac.jpg');
+        }
+        
+    }
 }
