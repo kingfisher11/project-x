@@ -7,6 +7,7 @@ use App\Models\Training;
 use File;
 use Storage;
 use App\Http\Requests\StoreTrainingRequest;
+use Mail;
 
 class TrainingController extends Controller
 {
@@ -54,6 +55,14 @@ class TrainingController extends Controller
             // update row with filename
             $training->update(['attachment'=>$filename]);
         }
+
+        //send email to user
+        Mail::send('email.training-created',[], function($message){
+            $message->to['muhdhanis08@gmail.com'];
+            $message->subject['Training Created using Inline Mail'];
+
+
+        });
         // return to index
         return redirect()
         ->route('training:list');
