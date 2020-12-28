@@ -8,6 +8,8 @@ use File;
 use Storage;
 use App\Http\Requests\StoreTrainingRequest;
 use Mail;
+use Notification;
+use App\Notifications\DeleteTrainingNotification;
 
 class TrainingController extends Controller
 {
@@ -111,6 +113,9 @@ class TrainingController extends Controller
 
     public function delete(Training $training)
     {
+        $user = auth()->user();
+        Notification::send($user, new DeleteTrainingNotification());
+
         // find id on table using model
         //$training = Training::find($id);
         // this function is using Binding Model
