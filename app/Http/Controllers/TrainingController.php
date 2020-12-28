@@ -57,12 +57,18 @@ class TrainingController extends Controller
         }
 
         //send email to user
-        Mail::send('email.training-created',[], function($message){
-            $message->to['muhdhanis08@gmail.com'];
-            $message->subject['Training Created using Inline Mail'];
+        // Mail::send('email.training-created',[
+        //     'title' => $training->title,
+        //     'description' => $training->description
+        // ], function($message){
+        //     $message->to('muhdhanis08@gmail.com');
+        //     $message->subject('Training Created using Inline Mail');
 
 
-        });
+        // });
+
+        // send email to user using Mailable class
+        Mail::to('muhdhanis08@gmail.com')->send(new \App\Mail\TrainingCreated($training));
         // return to index
         return redirect()
         ->route('training:list');
