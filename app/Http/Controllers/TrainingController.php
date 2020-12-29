@@ -80,6 +80,7 @@ class TrainingController extends Controller
 
     public function show(Training $training)
     {
+        $this->authorize('view', $training);
         // find id on table using model
         //$training = Training::find($id);
         // this function is using Binding Model
@@ -90,6 +91,7 @@ class TrainingController extends Controller
 
     public function edit($id)
     {
+        
         // find id on table using model
         $training = Training::find($id);
 
@@ -100,6 +102,7 @@ class TrainingController extends Controller
 
     public function update($id, Request $request)
     {
+        $this->authorize('update', $training);
         // find id at tables
         $training = Training::find($id);
 
@@ -113,6 +116,7 @@ class TrainingController extends Controller
 
     public function delete(Training $training)
     {
+        $this->authorize('delete', $training);
         $user = auth()->user();
         Notification::send($user, new DeleteTrainingNotification());
 

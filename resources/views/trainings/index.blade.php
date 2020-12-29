@@ -31,12 +31,15 @@
                     </td>
                     <td>{{$training->created_at ? $training->created_at->diffForHumans() : 'Tiada'}}</td>
                     <td>
+                    @can('view', $training)
                     <a href="{{ route('training:show', $training)}}" class="btn btn-primary">View</a>
-                    </td>                     <td>
+                    @endcan
+                    </td>                     <td>@can('update', $training)
                     <a href="{{ route('training:edit', $training)}}" class="btn btn-success">Edit</a>
-                    </td>
-                    <td>
+                    @endcan</td>
+                    <td>@can('delete', $training)
                     <a onClick="return confirm('Are you sure?')" href="{{ route('training:delete', $training)}}" class="btn btn-danger">Delete</a>
+                    @endcan
                     </td>
                     </tr>
                 @endforeach
