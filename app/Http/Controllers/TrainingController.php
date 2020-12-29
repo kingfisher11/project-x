@@ -131,4 +131,22 @@ class TrainingController extends Controller
         // return to view
         return redirect()->route('training:list');
     }
+
+    public function forceDelete(Training $training)
+    {
+        $this->authorize('delete', $training);
+        $user = auth()->user();
+        Notification::send($user, new DeleteTrainingNotification());
+
+        // find id on table using model
+        //$training = Training::find($id);
+        // this function is using Binding Model
+        if ($training->attachment != null){
+            Storage::disk('public')->delete($training->attachment);
+        }
+        $training->forceDelete();
+
+        // return to view
+        return redirect()->route('training:list');
+    }
 }

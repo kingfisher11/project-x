@@ -39,6 +39,7 @@
                     @endcan</td>
                     <td>@can('delete', $training)
                     <a onClick="return confirm('Are you sure?')" href="{{ route('training:delete', $training)}}" class="btn btn-danger">Delete</a>
+                    <a onClick="return confirm('Are you sure want to PERMANENTLY delete?')" href="{{ route('training:forceDelete', $training)}}" class="btn btn-lg btn-danger">Delete</a>
                     @endcan
                     </td>
                     </tr>
