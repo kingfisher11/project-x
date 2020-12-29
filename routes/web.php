@@ -22,6 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('admin');
 
 Route::get('/trainings', [\App\Http\Controllers\TrainingController::class, 'index'])->name('training:list');
 Route::get('/users', [\App\Http\Controllers\UserController::class, 'index']);
