@@ -13,6 +13,11 @@ use App\Notifications\DeleteTrainingNotification;
 
 class TrainingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','admin']);
+    }
+    
     public function index()
     {
         // query trainings from trainings table using model
