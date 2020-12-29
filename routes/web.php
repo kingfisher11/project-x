@@ -33,3 +33,4 @@ Route::get('/trainings/{id}/edit',[App\Http\Controllers\TrainingController::clas
 Route::post('/trainings/{id}/edit',[App\Http\Controllers\TrainingController::class, 'update'])->name('training:update');
 Route::get('/trainings/{training}/delete',[App\Http\Controllers\TrainingController::class, 'delete'])->name('training:delete');
 Route::get('/trainings/{training}/forceDelete',[App\Http\Controllers\TrainingController::class, 'forceDelete'])->name('training:forceDelete');
+Route::get('/admin/audits', [App\Http\Controllers\AuditController::class, 'audit'])->middleware(['auth','admin']);
