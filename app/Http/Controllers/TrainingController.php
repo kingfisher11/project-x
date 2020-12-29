@@ -91,7 +91,7 @@ class TrainingController extends Controller
 
     public function edit($id)
     {
-        
+        // $this->authorize('edit', $training);
         // find id on table using model
         $training = Training::find($id);
 
@@ -102,7 +102,7 @@ class TrainingController extends Controller
 
     public function update($id, Request $request)
     {
-        $this->authorize('update', $training);
+        // $this->authorize('update', $training);
         // find id at tables
         $training = Training::find($id);
 
