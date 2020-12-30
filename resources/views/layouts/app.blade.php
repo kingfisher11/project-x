@@ -39,6 +39,9 @@
                     <li class="nav-item">
                     <a class="nav-link" href="{{route('training:create')}}">Training Create Form</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{route('training:audit')}}">Audit</a>
+                    </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -76,12 +79,19 @@
                                 <i class="far fa-user-circle"></i> {{ Auth::user()->name }}
                                 </a>
 
+                                
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
+                                    <hr>
+                                    
+                                    <a class="dropdown-item" ><i class="fas fa-bug"></i> Last IP: {{auth()->user()->previousLoginIP() ?? 'Not found'}} </a>
+                                    <a class="dropdown-item"><i class="far fa-calendar-alt"></i> Last visit: {{auth()->user()->previousLoginAt() ?? 'Not found'}}</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

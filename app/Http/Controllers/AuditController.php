@@ -13,6 +13,6 @@ class AuditController extends Controller
     $audits = Audit::orderBy('created_at','desc')->get();
 
     // return to view
-    return view('audit', compact('audit'));
+    return view('audit', compact('audits'));
     }
 }
